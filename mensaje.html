@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mensaje-box">
+        <h2>Datos recibidos:</h2>
+        <p>Correo: <span id="correo"></span></p>
+        <p>Nombre: <span id="nombre"></span></p>
+        <p>Usuario: <span id="usuario"></span></p>
+        <p>Password: <span id="password"></span></p>
+        <p>Dirección IP: <span id="ip"></span></p>
+    </div>
+</body>
+<script>
+    document.getElementById("correo").innerHTML = localStorage.getItem("correo");
+    document.getElementById("nombre").innerHTML = localStorage.getItem("nombre");
+    document.getElementById("usuario").innerHTML = localStorage.getItem("usuario");
+    document.getElementById("password").innerHTML = localStorage.getItem("password");
+
+    fetch('https://api.ipify.org?format=json')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.ip);
+    document.getElementById("ip").innerHTML = data.ip;
+  });
+
+ 
+
+</script>
+</body>
+</html>
